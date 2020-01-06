@@ -1,0 +1,39 @@
+import java.util.*;
+import java.lang.*;
+
+import java.util.Scanner;
+
+
+class shivani {
+    public static void main(String[] args) {
+        int tc;
+        Scanner sc = new Scanner(System.in);
+        tc = sc.nextInt();
+        while (tc-->0){
+            int s = sc.nextInt();
+            List<Integer> list = new ArrayList<>();
+            for (int i = 0; i <3 ; i++) {
+                int x = sc.nextInt();
+                list.add(x);
+            }
+            int hit = 0;
+            while (!list.isEmpty()){
+                int sum =0,rsum =0,counter=0,rcounter=0;
+                for (int a: list) {
+                    sum = sum + a;
+                    if(sum > s ){
+                        break;
+                    }
+                    counter++;
+                }
+                for (int i = 0; i <counter ; i++) {
+                    list.remove(0);
+                }
+                hit++;
+            }
+            System.out.println(hit);
+        }
+    }
+}
+//    }
+//}
