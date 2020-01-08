@@ -1,0 +1,58 @@
+import java.lang.*;
+
+import java.util.Scanner;
+
+
+class shivani {
+    public static void main(String[] args) {
+        int tc;
+        Scanner sc = new Scanner(System.in);
+        tc = sc.nextInt();
+        int N, M;
+        int score;
+        int a[][];
+        boolean pass = true;
+        while (tc-- > 0) {
+            N = sc.nextInt();
+            M = sc.nextInt();
+
+            score = 0;
+
+            a = new int[N][M];
+
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < M; j++) {
+                    a[i][j] = sc.nextInt();
+                }
+            }
+
+            for (int l = 3; l <= N; l = l + 2) {
+                for (int i = (l - 1) / 2; i < (N - (l - 1) / 2); i++) {
+                    for (int j = (l - 1) / 2; j < (M - (l - 1) / 2); j++) {
+                        pass = true;
+                        for (int k = 1; k <= (l - 1) / 2; k++) {
+                            if (!(a[i - k][j] == a[i + k][j])) {
+                                pass = false;
+                                break;
+                            }
+                        }
+
+                        if (pass)
+                            for (int k = 1; k <= (l - 1) / 2; k++) {
+                                if (!(a[i][j - k] == a[i][j + k])) {
+                                    pass = false;
+                                    break;
+                                }
+                            }
+                        if (pass)
+                            score++;
+
+                    }
+                }
+
+            }
+            System.out.println(score + N * M);
+        }
+    }
+}
+
